@@ -1,5 +1,5 @@
 h1 {font-family : georgia}
 body {background : #AEE2FF}
-input, textarea {border-radius : 5px; font-family : times}
+input, textarea {border-radius : 5px; height: 25px; font-family : times}
 
-input[type="submit"] {border : 0; width : 80px; height :25px}
+input[type="submit"] {border : 0; width: 80px; height: 25px font-size: 2em}
