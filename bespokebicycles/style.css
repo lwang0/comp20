@@ -3,3 +3,5 @@ body {background : #AEE2FF}
 input, textarea {border-radius : 5px; font-family : times; font-size: 1em}
 input[type="text"], input[type="email"] {height : 25px}
 input[type="submit"] {border : 0; width: 80px; height: 25px font-size: 1em}
+
+.footer {position : fixed}
