@@ -41,20 +41,21 @@
     </p>
     <form>
         <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
+        <input type="text" id="fname" name="fname" required placeholder="First Name">
         <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname"><br>
+        <input type="text" id="lname" name="lname" required placeholder="Last Name"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required placeholder="Enter a valid email address"><br>
 
         <input type="radio" id="feedback" name="type" value="feedback">
-        <label for="feedback">Feedback</label><br>
+        <label for="feedback">Feedback</label>
         <input type="radio" id="question" name="type" value="question">
-        <label for="question">Question</label><br>
+        <label for="question">Question</label>
         <input type="radio" id="other" name="type" value="other">
         <label for="question">Other</label><br>
 
-        <input type="text" name="" value=""><br>
+        <input type="text" name="" value="" required placeholder="Write your message here"><br>
 
         <input type="submit" value="Submit">
-<label for="other">Other</label>
     </form>
 </body>
