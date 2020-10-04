@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="xmlstyle.css" type="text/css"?>
+
+<setlist>Set List
+    <one>
+        <title>Rich Love</title>
+        <artist>OneRepublic & Seeb</artist>
+        <genre>Pop</genre>
+        <year>2017</year>
+    </one>
+    <two>
+        <title>God is a woman</title>
+        <artist>Ariana Grande</artist>
+        <genre>Pop</genre>
+        <year>2018</year>
+    </two>
+    <three>
+        <title>Attention</title>
+        <artist>Charlie Puth</artist>
+        <genre>Pop</genre>
+        <year>2017</year>
+    </three>
+    <four>
+        <title>New Kid in Town</title>
+        <artist>Eagles</artist>
+        <genre>Rock</genre>
+        <year>1976</year>
+    </four>
+    <five>
+        <title>Sir Duke</title>
+        <artist>Stevie Wonder</artist>
+        <genre>Pop</genre>
+        <year>1976</year>
+    </five>
+    <six>
+        <title>Southern Nights</title>
+        <artist>Glenn Cambell</artist>
+        <genre>Country</genre>
+        <year>1977</year>
+    </six>
+    <seven>
+        <title>Hot Summer Nights</title>
+        <artist>The Script</artist>
+        <genre>Pop</genre>
+        <year>2019</year>
+    </seven>
+    <eight>
+        <title>Rose Gold</title>
+        <artist>Pentatonix</artist>
+        <genre>Pop</genre>
+        <year>2015</year>
+    </eight>
+    <nine>
+        <title>Promises</title>
+        <artist>Calvin Harris & Sam Smith</artist>
+        <genre>Dance</genre>
+        <year>2018</year>
+    </nine>
+    <ten>
+        <title>Human</title>
+        <artist>Rag'n'Bone Man</artist>
+        <genre>Alternative</genre>
+        <year>2017</year>
+    </ten>
+</setlist>
