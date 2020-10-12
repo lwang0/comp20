@@ -42,34 +42,46 @@
         var prize = "$0"
         switch (matches.length) {
             case 0:
-                if (luckyMatch)
+                if (luckyMatch) {
                     prize = "$4"
+                    document.write("The lucky ball matched!<br>")
+                }
                 break;
             case 1:
-            if (luckyMatch)
-                prize = "$6"
+                if (luckyMatch) {
+                    prize = "$6"
+                    document.write("The lucky ball matched!<br>")
+                }
                 break;
             case 2:
-                if (luckyMatch)
+                if (luckyMatch) {
                     prize = "$25"
+                    document.write("The lucky ball matched!<br>")
+                }
                 else
                     prize = "$3"
                 break;
             case 3:
-            if (luckyMatch)
-                prize = "$150"
-            else
-                prize = "$20"
+                if (luckyMatch) {
+                    prize = "$150"
+                    document.write("The lucky ball matched!<br>")
+                }
+                else
+                    prize = "$20"
                 break;
             case 4:
-                if (luckyMatch)
+                if (luckyMatch) {
                     prize = "$5,000"
+                    document.write("The lucky ball matched!<br>")
+                }
                 else
                     prize = "$200"
                 break;
             case 5:
-                if (luckyMatch)
+                if (luckyMatch) {
                     prize = "$7,000 a WEEK for LIFE!"
+                    document.write("The lucky ball matched!<br>")
+                }
                 else
                     prize = "$25,000 a YEAR for LIFE!"
                 break;
