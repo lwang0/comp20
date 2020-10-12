@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Quick Pick</title>
+</head>
+
+<body>
+    <h1>Quick Pick</h1><br>
+    <script type="text/javascript">
+        var nums = prompt("Enter the winning numbers separated by spaces:", "")
+        let winningPicks = nums.split(" ")
+        for (var i = 0; i < winningPicks.length; i++) {
+            winningPicks[i] = parseInt(winningPicks[i])
+            if (isNaN(winningPicks[i]))
+                winningPicks[i] = 0
+        }
+        var winningLuckyBall = prompt("Enter the winning lucky ball number:", "")
+        winningLuckyBall = parseInt(winningLuckyBall)
+
+        var picks = new Array(5)
+        for (var i = 0; i < picks.length; i++) {
+            picks[i] = Math.floor((Math.random() * 48) + 1)
+        }
+        let luckyBall = Math.floor((Math.random() * 18) + 1)
+        picks.sort(function(a, b) {return a-b})
+
+        document.write("The quick pick numbers are: ")
+        for (var i = 0; i < picks.length; i++) {
+            document.write(picks[i] + " ")
+        }
+        document.write("<br>The lucky ball number is: " + luckyBall + "<br><br>")
+
+        document.write("The winning numbers are: ")
+        for (var i = 0; i < winningPicks.length; i++) {
+            document.write(winningPicks[i] + " ")
+        }
+        document.write("<br>The winning lucky ball number is: " + winningLuckyBall + "<br><br>")
+
+        let matches = picks.filter(element => winningPicks.includes(element))
+        let luckyMatch = luckyBall == winningLuckyBall
+
+        var prize = "$0"
+        switch (matches.length) {
+            case 0:
+                if (luckyMatch)
+                    prize = "$4"
+                break;
+            case 1:
+            if (luckyMatch)
+                prize = "$6"
+                break;
+            case 2:
+                if (luckyMatch)
+                    prize = "$25"
+                else
+                    prize = "$3"
+                break;
+            case 3:
+            if (luckyMatch)
+                prize = "$150"
+            else
+                prize = "$20"
+                break;
+            case 4:
+                if (luckyMatch)
+                    prize = "$5,000"
+                else
+                    prize = "$200"
+                break;
+            case 5:
+                if (luckyMatch)
+                    prize = "$7,000 a WEEK for LIFE!"
+                else
+                    prize = "$25,000 a YEAR for LIFE!"
+                break;
+            default:
+                prize = "$0"
+        }
+
+        document.write("Congratulations! You won " + prize)
+    </script>
+</body>
