@@ -8,19 +8,19 @@
     <h1>Joe's Hot Dogs</h1><br>
     <script type="text/javascript">
         var hotDogs
-        while (isNaN(hotDogs)) {
-            hotDogs = prompt("How many hot dogs would you like? ","")
+        while (isNaN(hotDogs) || hotDogs < 0) {
+            hotDogs = prompt("How many hot dogs would you like? ", "")
             hotDogs = parseInt(hotDogs)
         }
         var frenchFries
-        while (isNaN(frenchFries)) {
-            frenchFries = prompt("How many french fries would you like? ","")
+        while (isNaN(frenchFries) || frenchFries < 0) {
+            frenchFries = prompt("How many french fries would you like? ", "")
             frenchFries = parseInt(frenchFries)
         }
         var drinks
-        while (isNaN(drinks)) {
-            drinks = prompt("How many drinks would you like? ","")
-            drinks = parseInt(frenchFries)
+        while (isNaN(drinks) || drinks < 0) {
+            drinks = prompt("How many drinks would you like? ", "")
+            drinks = parseInt(drinks)
         }
 
         document.write("You ordered: " + hotDogs + " hot dogs<br>")
@@ -29,15 +29,16 @@
 
         var total = hotDogs * 3.25 + frenchFries * 2 + drinks * 1.5
 
-        document.write("Your subtotal is: $" + total.toFixed(2) + "<br>")
+        document.write("<br>Your subtotal is: $" + total.toFixed(2) + "<br>")
 
         if (total > 20) {
-            total = total * .9
-            document.write("You qualified for Joe's Special! Your new subtotal is $" + total + "<br>")
+            let discount = total * .1
+            total = total - discount
+            document.write("You qualified for Joe's Special! You saved $" + discount.toFixed(2) + ". Your new subtotal is $" + total.toFixed(2) + "<br>")
         }
 
         let tax = total * .0625
-        total = total * tax
+        total = total + tax
 
         document.write("Tax (6.25%): $" + tax.toFixed(2) + "<br>")
         document.write("Your total with tax: $" + total.toFixed(2) + "<br>")
