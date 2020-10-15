@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Amicable Numbers</title>
+</head>
+
+<body>
+    <h1>Amicable Numbers</h1>
+
+    <form id="numbers">
+        <label for="numbers">Enter two numbers:</label>
+        <input type="number" id="n1" name="n1" required value="" min="0">
+        <input type="number" id="n2" name="n2" required value="" min="0">
+        <input type="button" name="submit" value="Submit" onclick=submitForm()>
+    </form>
+
+    <div>
+        <script type="text/javascript">
+            function submitForm() {
+                var n1 = document.getElementById("n1").value
+                var n2 = document.getElementById("n2").value
+                document.write("<h1>Amicable Numbers</h1><br><div>The numbers are " + n1 + " and " + n2 + "</div>")
+
+                console.log(getFactors(n1))
+                console.log(getFactors(n2))
+                console.log(showArray(getFactors(n1)))
+                console.log(showArray(getFactors(n2)))
+
+                if (showArray(getFactors(n1)) == n2 && showArray(getFactors(n2)) == n1) {
+                    document.write(n1 + " and " + n2 + " are amicable!")
+                }
+                else {
+                    document.write(n1 + " and " + n2 + " are not amicable :(")
+                }
+            }
+
+            function isFactor(num, factor) {
+                return !(num % factor)
+            }
+
+            // console.log(isFactor(9, 2))
+            // console.log(isFactor(10, 2))
+
+            function showArray(arr) {
+                return arr.reduce(function(a, b) {return a + b}, 0)
+            }
+
+            // var nums = [1, 2, 3, 4]
+            // console.log(showArray(nums))
+
+            function getFactors(num) {
+                var factors = new Array
+                for (var i = 1; i < num / 2 + 1; i++) {
+                    if (isFactor(num, i)) {
+                        factors.push(i)
+                    }
+                }
+                return factors
+            }
+
+            // console.log(getFactors(24))
+        </script>
+    </div>
+</body>
