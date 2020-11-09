@@ -27,7 +27,8 @@
             }
         }
 
-        request.send()
+        var data = {"start": 0, "numberOfDigits": 100}
+        request.send(JSON.stringify(data))
     </script>
 
     <div id="data">Loading...</div>
