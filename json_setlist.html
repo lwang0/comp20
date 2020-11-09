@@ -5,11 +5,11 @@
     <title>JSON Setlist</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style media="screen" type="text/css">
-        div {text-align: center}
-        th {font-size: 1.5em}
-        tr {padding: 1.5em}
-        th, td {padding: 1.5em; border-bottom: 1px}
-        tr:nth-child(even) {background-color: #f2f2f2}
+    div {text-align: center}
+    th {font-size: 1.5em}
+    tr {padding: 1.2em}
+    th, td {padding: 1.5em; border-bottom: 1px}
+    tr:nth-child(even) {background-color: #f2f2f2}
     </style>
 </head>
 <body>
@@ -20,17 +20,45 @@
         var songs = [];
 
         $.getJSON('setlist.json', function(data) {
-            $.each(data.song, function(i, f) {
+            $.each(data.song, function(i, song) {
                 var tblRow = "<tr>" + "<td>" + i + "</td>" +
-                "<td>" + f.title + "</td>" +
-                "<td>" + f.artist + "</td>" + "<td>" + f.genre + "</td>" + "<td>" + f.year + "</td>" + "</tr>"
+                "<td>" + song.title + "</td>" +
+                "<td>" + song.artist + "</td>" + "<td>" + song.genre + "</td>" + "<td>" + song.year + "</td>" + "</tr>"
                 $(tblRow).appendTo("#setlist tbody")
             })
         })
     })
-    </script>
 
+    var dropdown = document.getElementById('dropdown')
+    dropdown.onchange = function() {
+        var selection = dropdown.value
+        var table = document.getElementById("setlist");
+        tr = table.getElementsByTagName("tr");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                if (td.innerHTML == selection) {
+                    tr[i].style.display = "block"
+                } else {
+                    tr[i].style.display = "none"
+                }
+            }
+        }
+    }
+    </script>
     <div>
+        <form>
+            <select id="dropdown">
+                <option>Pop</option>
+                <option>Rock</option>
+                <option>Country</option>
+                <option>Dance</option>
+                <option>Alternative</option>
+            </select>
+        </form>
+
         <table id= "setlist">
             <thead>
                 <th>#</th>
