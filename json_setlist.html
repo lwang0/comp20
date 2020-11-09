@@ -15,7 +15,7 @@
         $.getJSON('setlist.json', function(data) {
             $.each(data.song, function(i, f) {
                 var tblRow = "<tr>" + "<td>" + f.title + "</td>" +
-                "<td>" + f.artists + "</td>" + "<td>" + f.genre + "</td>" + "<td>" + f.year + "</td>" + "</tr>"
+                "<td>" + f.artist + "</td>" + "<td>" + f.genre + "</td>" + "<td>" + f.year + "</td>" + "</tr>"
                 $(tblRow).appendTo("#setlist tbody")
             })
         })
@@ -23,7 +23,7 @@
     </script>
 
     <div>
-        <table id= "setlist" border="2">
+        <table id= "setlist">
             <thead>
                 <th>Title</th>
                 <th>Artist(s)</th>
