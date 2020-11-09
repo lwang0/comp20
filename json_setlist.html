@@ -8,7 +8,7 @@
     div {text-align: center}
     th {font-size: 1.5em}
     th, tr {padding: 1.2em}
-    tr {border-bottom: 2px}
+    tr {border-bottom: 2px solid black}
     td {padding: 1.5em}
     </style>
 </head>
@@ -34,6 +34,7 @@
         <form>
             Filter by genre:
             <select id="dropdown">
+                <option>None</option>
                 <option>Pop</option>
                 <option>Rock</option>
                 <option>Country</option>
@@ -61,15 +62,19 @@
             var table = document.getElementById("setlist");
             tr = table.getElementsByTagName("tr");
 
-            // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[3];
-                if (td) {
-                    if (td.innerHTML == selection) {
-                        tr[i].style.display = ""
-                    } else {
-                        tr[i].style.display = "none"
+                if (selection != "None") {
+                    td = tr[i].getElementsByTagName("td")[3];
+                    if (td) {
+                        if (td.innerHTML == selection) {
+                            tr[i].style.display = ""
+                        } else {
+                            tr[i].style.display = "none"
+                        }
                     }
+                }
+                else {
+                    tr[i].style.display = ""
                 }
             }
         }
