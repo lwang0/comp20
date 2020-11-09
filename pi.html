@@ -7,54 +7,35 @@
 </head>
 <body>
     <h1>pi API</h1>
+    <p>The pi API returns the number of digits of pi specified, starting at a certain number. It is found at <a href="https://pi.delivery/">https://pi.delivery/</a>. This API might be helpful if you were hosting a pi day celebration and needed to display a certain number of digits of pi. It could also be helpful for use in a Geometry class when students must understand the value of pi.
+    </p>
     <script language="javascript">
-        request = new XMLHttpRequest();
-        console.log("1 - request object created");
+        var request = new XMLHttpRequest()
 
-        // Step 2: Set the URL for the AJAX request to be the JSON file
-
-        request.open("GET", "https://api.pi.delivery/v1/pi", true)
-
-        console.log("2 - opened request file");
-
-        // Step 3: set up event handler/callback
+        request.open("GET", "https://api.pi.delivery/v1/pi?start=0&numberOfDigits=100", true)
 
         request.onreadystatechange = function() {
             console.log("3 - readystatechange event fired.");
 
             if (request.readyState == 4 && request.status == 200) {
+                result = JSON.parse(request.responseText)
 
-                // Step 5: wait for done + success
-                console.log("5 - response received");
-                result = request.responseText;
-                alert(result);
-                weather = JSON.parse(result);
-
-                document.getElementById("data").innerHTML ="current temp in boston: " + weather["current"]["temp"];
+                document.getElementById("data").innerHTML = "The first 100 digits of pi are " + result.content[0] + "." + result.content.substring(1)
 
             }
             else if (request.readyState == 4 && request.status != 200) {
-
-                document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
-
+                document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails"
             }
 
             else if (request.readyState == 3) {
-
-                document.getElementById("data").innerHTML = "Too soon!  Try again";
-
+                document.getElementById("data").innerHTML = "Too soon!  Try again"
             }
 
         }
-        // Step 4: fire off the HTTP request
-        var data = {
-            "start": "1",
-            "numberOfDigits": "100"
-        }
-        request.send(JSON.stringify(data))
-        console.log("4 - Request sent");
+        request.send()
     </script>
 
     <div id="data">Loading...</div>
+
 </body>
 </html>
