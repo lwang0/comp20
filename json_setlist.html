@@ -8,8 +8,8 @@
     div {text-align: center}
     th {font-size: 1.5em}
     tr {padding: 1.2em}
-    th, td {padding: 1.5em; border-bottom: 1px}
-    tr:nth-child(even) {background-color: #f2f2f2}
+    td {padding: 1.5em}
+    tr:nth-child(odd) {background-color: #f2f2f2}
     </style>
 </head>
 <body>
@@ -65,7 +65,7 @@
                 td = tr[i].getElementsByTagName("td")[3];
                 if (td) {
                     if (td.innerHTML == selection) {
-                        tr[i].style.display = "block"
+                        tr[i].style.display = ""
                     } else {
                         tr[i].style.display = "none"
                     }
