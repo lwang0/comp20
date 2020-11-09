@@ -7,9 +7,9 @@
     <style media="screen" type="text/css">
     div {text-align: center}
     th {font-size: 1.5em}
-    tr {padding: 1.2em}
+    th, tr {padding: 1.2em}
+    tr {border-bottom: 2px}
     td {padding: 1.5em}
-    tr:nth-child(odd) {background-color: #f2f2f2}
     </style>
 </head>
 <body>
@@ -30,8 +30,9 @@
         })
     </script>
 
-    <div>
+    <div style="text-align: left">
         <form>
+            Filter by genre:
             <select id="dropdown">
                 <option>Pop</option>
                 <option>Rock</option>
@@ -40,7 +41,7 @@
                 <option>Alternative</option>
             </select>
         </form>
-
+        <br>
         <table id= "setlist">
             <thead>
                 <th>#</th>
