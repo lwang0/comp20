@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>pi API</h1>
-    <p>The pi API returns the number of digits of pi specified, starting at a certain number. It is found at <a href="https://pi.delivery/">https://pi.delivery/</a>. This API might be helpful if you were hosting a pi day celebration and needed to display a certain number of digits of pi. It could also be helpful for use in a Geometry class when students must understand the value of pi.
+    <p>The pi API returns the number of digits of pi specified, starting at a certain number. It is found at <a href="https://pi.delivery/">https://pi.delivery/</a>. I used the options for starting the request of digits at 0 and getting 100 digits. This API might be helpful if you were hosting a pi day celebration and needed to display a certain number of digits of pi. It could also be helpful for use in a Geometry class when students must understand the value of pi.
     </p>
     <script language="javascript">
         var request = new XMLHttpRequest()
@@ -26,7 +26,7 @@
                 document.getElementById("data").innerHTML = "Too soon!  Try again"
             }
         }
-        
+
         request.send()
     </script>
 
