@@ -16,38 +16,20 @@
     <h1>JSON Setlist</h1>
 
     <script>
-    $(function() {
-        var songs = [];
+        $(function() {
+            var songs = [];
 
-        $.getJSON('setlist.json', function(data) {
-            $.each(data.song, function(i, song) {
-                var tblRow = "<tr>" + "<td>" + i + "</td>" +
-                "<td>" + song.title + "</td>" +
-                "<td>" + song.artist + "</td>" + "<td>" + song.genre + "</td>" + "<td>" + song.year + "</td>" + "</tr>"
-                $(tblRow).appendTo("#setlist tbody")
+            $.getJSON('setlist.json', function(data) {
+                $.each(data.song, function(i, song) {
+                    var tblRow = "<tr>" + "<td>" + i + "</td>" +
+                    "<td>" + song.title + "</td>" +
+                    "<td>" + song.artist + "</td>" + "<td>" + song.genre + "</td>" + "<td>" + song.year + "</td>" + "</tr>"
+                    $(tblRow).appendTo("#setlist tbody")
+                })
             })
         })
-    })
-
-    var dropdown = document.getElementById('dropdown')
-    dropdown.onchange = function() {
-        var selection = dropdown.value
-        var table = document.getElementById("setlist");
-        tr = table.getElementsByTagName("tr");
-
-        // Loop through all table rows, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[3];
-            if (td) {
-                if (td.innerHTML == selection) {
-                    tr[i].style.display = "block"
-                } else {
-                    tr[i].style.display = "none"
-                }
-            }
-        }
-    }
     </script>
+
     <div>
         <form>
             <select id="dropdown">
@@ -70,5 +52,26 @@
             <tbody></tbody>
         </table>
     </div>
+
+    <script type="text/javascript">
+        var dropdown = document.getElementById('dropdown')
+        dropdown.onchange = function() {
+            var selection = dropdown.value
+            var table = document.getElementById("setlist");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[3];
+                if (td) {
+                    if (td.innerHTML == selection) {
+                        tr[i].style.display = "block"
+                    } else {
+                        tr[i].style.display = "none"
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
