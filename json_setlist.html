@@ -32,7 +32,7 @@
 
     <div style="text-align: left">
         <form>
-            Filter by genre:
+            Choose a genre:
             <select id="dropdown">
                 <option>None</option>
                 <option>Pop</option>
@@ -41,6 +41,7 @@
                 <option>Dance</option>
                 <option>Alternative</option>
             </select>
+            <button type="button" id="filter">Filter</button>
         </form>
         <br>
         <table id= "setlist">
@@ -57,7 +58,7 @@
 
     <script type="text/javascript">
         var dropdown = document.getElementById('dropdown')
-        dropdown.onchange = function() {
+        document.getElementById('filter').onclick = function() {
             var selection = dropdown.value
             var table = document.getElementById("setlist");
             tr = table.getElementsByTagName("tr");
