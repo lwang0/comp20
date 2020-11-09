@@ -1,0 +1,64 @@
+{
+    "song" : [
+        {
+            "title" : "Rich Love",
+            "artist" : ["OneRepublic", "Seeb"],
+            "genre" : ["Pop"],
+            "year" : 2017
+        },
+        {
+            "title" : "God is a woman",
+            "artist" : ["Ariana Grande"],
+            "genre" : ["Pop"],
+            "year" : 2018
+        },
+        {
+            "title" : "Attention",
+            "artist" : ["Charlie Puth"],
+            "genre" : ["Pop"],
+            "year" : 2017
+        },
+        {
+            "title" : "New Kid in Town",
+            "artist" : ["Eagles"],
+            "genre" : ["Rock"],
+            "year" : 1976
+        },
+        {
+            "title" : "Sir Duke",
+            "artist" : ["Stevie Wonder"],
+            "genre" : ["Pop"],
+            "year" : 1976
+        },
+        {
+            "title" : "Southern Nights",
+            "artist" : ["Glenn Cambell"],
+            "genre" : ["Country"],
+            "year" : 1977
+        },
+        {
+            "title" : "Hot Summer Nights",
+            "artist" : ["The Script"],
+            "genre" : ["Pop"],
+            "year" : 2019
+        },
+        {
+            "title" : "Rose Gold",
+            "artist" : ["Pentatonix"],
+            "genre" : ["Pop"],
+            "year" : 2015
+        },
+        {
+            "title" : "Promises",
+            "artist" : ["Calvin Harris", "Sam Smith"],
+            "genre" : ["Dance"],
+            "year" : 2018
+        },
+        {
+            "title" : "Human",
+            "artist" : ["Rag'n'Bone Man"],
+            "genre" : ["Alternative"],
+            "year" : 2017
+        }
+    ]
+}
