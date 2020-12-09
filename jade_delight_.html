@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Jade Delight</title>
+</head>
+
+<body>
+    <script language="javascript">
+
+    function MenuItem(name, cost)
+    {
+        this.name = name;
+        this.cost=cost;
+    }
+
+    menuItems = new Array(
+        new MenuItem("Chicken Chop Suey", 4.5),
+        new MenuItem("Sweet and Sour Pork", 6.25),
+        new MenuItem("Shrimp Lo Mein", 5.25),
+        new MenuItem("Moo Shi Chicken", 6.5),
+        new MenuItem("Fried Rice", 2.35)
+    );
+
+    function makeSelect(name, minRange, maxRange)
+    {
+        var t= "";
+        t = "<select name='" + name + "' size='1'>";
+        for (j=minRange; j<=maxRange; j++)
+        t += "<option>" + j + "</option>";
+        t+= "</select>";
+        return t;
+    }
+</script>
+
+<h1>Jade Delight</h1>
+<form action="order.php">
+    <p>First Name: <input type="text"  name='fname' /></p>
+    <p>Last Name*:  <input type="text"  name='lname' /></p>
+    <p>Street: <input type="text"  name='street' /></p>
+    <p>City: <input type="text"  name='city' /></p>
+    <p>Phone*: <input type="text"  name='phone' /></p>
+    <p>Email*: <input type="text"  name='email' /></p>
+    <p>
+        <input type="radio"  name="p_or_d" value = "pickup" checked="checked"/>Pickup
+        <input type="radio"  name='p_or_d' value = 'delivery'/>
+        Delivery
+    </p>
+    <table border="0" cellpadding="3">
+        <tr>
+            <th>Select Item</th>
+            <th>Item Name</th>
+            <th>Cost Each</th>
+            <th>Total Cost</th>
+        </tr>
+        <script language="javascript">
+
+        var s = "";
+        for (i=0; i< menuItems.length; i++)
+        {
+            s += "<tr><td>";
+            s += makeSelect("quan" + i, 0, 10);
+            s += "</td><td>" + menuItems[i].name + "</td>";
+            s += "<td> $ " + menuItems[i].cost.toFixed(2) + "</td>";
+            s += "<td>$<input type='text' name='cost" + i + "' value='0.00'/></td></tr>";
+        }
+        document.writeln(s);
+    </script>
+</table>
+<p>Subtotal:
+    $<input type="text"  name='subtotal' id="subtotal" />
+</p>
+<p>Mass tax 6.25%:
+    $ <input type="text"  name='tax' id="tax" />
+</p>
+<p>Total: $ <input type="text"  name='total' id="total" />
+</p>
+
+<input type = "submit" value = "Submit Order" />
+
+</form>
+
+<script type="text/javascript">
+    // calculate cost of items
+    var rows = document.getElementsByTagName("table")[0].rows
+
+    var ccs = document.getElementsByName('quan0')[0]
+    ccs.onchange = function() {
+        rows[1].lastChild.lastChild.value = (ccs.value * menuItems[0].cost).toFixed(2)
+        calculateTotal()
+    }
+    var ssp = document.getElementsByName('quan1')[0]
+    ssp.onchange = function() {
+        rows[2].lastChild.lastChild.value = (ssp.value * menuItems[1].cost).toFixed(2)
+        calculateTotal()
+    }
+    var slm = document.getElementsByName('quan2')[0]
+    slm.onchange = function() {
+        rows[3].lastChild.lastChild.value = (slm.value * menuItems[2].cost).toFixed(2)
+        calculateTotal()
+    }
+    var msc = document.getElementsByName('quan3')[0]
+    msc.onchange = function() {
+        rows[4].lastChild.lastChild.value = (msc.value * menuItems[3].cost).toFixed(2)
+        calculateTotal()
+    }
+    var fr = document.getElementsByName('quan4')[0]
+    fr.onchange = function() {
+        rows[5].lastChild.lastChild.value = (fr.value * menuItems[4].cost).toFixed(2)
+        calculateTotal()
+    }
+
+    var total = 0
+    function calculateTotal() {
+        var subtotal = 0
+        for (var i = 1; i < rows.length; i++) {
+            var price = parseFloat(rows[i].lastChild.lastChild.value)
+            subtotal += price ? price : 0
+        }
+        document.getElementById('subtotal').value = subtotal.toFixed(2)
+        document.getElementById('tax').value = (subtotal * .0625).toFixed(2)
+        document.getElementById('total').value = (subtotal * 1.0625).toFixed(2)
+        total = (subtotal * 1.0625)
+    }
+
+    // hide city and street form fields when Delivery is checked
+    var delivery = false
+    var p_or_d = document.querySelectorAll("input[name='p_or_d']")
+    var pElements = document.getElementsByTagName('p')
+    pElements[2].style.display = 'none'
+    pElements[3].style.display = 'none'
+    p_or_d[0].onchange = deliveryCheck
+    p_or_d[1].onchange = deliveryCheck
+    function deliveryCheck() {
+        if (p_or_d[1].checked) {
+            pElements[2].style.display = 'block'
+            pElements[3].style.display = 'block'
+            delivery = true
+        }
+        else {
+            pElements[2].style.display = 'none'
+            pElements[3].style.display = 'none'
+            delivery = false
+        }
+    }
+
+    var submitButton = document.querySelector("input[type='submit']")
+    submitButton.onclick = function() {
+        if (!document.getElementsByName("lname")[0].value) {
+            alert("Please enter a last name")
+            return false
+        }
+        if (!document.getElementsByName("phone")[0].value.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
+            alert("Please enter a valid phone number")
+            return false
+        }
+        if (!document.getElementsByName("email")[0].value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/im)) {
+            alert("Please enter a valid email address");
+            return false
+        }
+
+        if (delivery) {
+            if (!document.getElementsByName('street')[0].value) {
+                alert("Please enter a street address")
+                return false
+            }
+            if (!document.getElementsByName('city')[0].value) {
+                alert("Please enter a city")
+                return false
+            }
+        }
+    }
+</script>
+</body>
+</html>
