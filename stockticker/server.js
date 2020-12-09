@@ -24,7 +24,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function(err, client) {
     const db = client.db("companies")
     const companies = db.collection("companies")
 
-    app.get('/index.html', (req, res) => {
+    app.get('/', (req, res) => {
         res.sendFile(__dirname + '/index.html')
     })
 
