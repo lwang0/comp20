@@ -11,7 +11,7 @@ app.listen(process.env.PORT || 3000, function() {
 })
 app.use(bodyParser.urlencoded({ extended: true }))
 
-var url = "mongodb+srv://me:whydoesthisneedapassword@comp20.kvecf.mongodb.net/<dbname>?retryWrites=true&w=majority"
+var url = "mongodb+srv://me:whydoesthisneedapassword@comp20.kvecf.mongodb.net/companies?retryWrites=true&w=majority"
 
 MongoClient.connect(url, { useUnifiedTopology: true }, function(err, client) {
     if (err) {
@@ -61,7 +61,6 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function(err, client) {
                        "<html><head><title>Query Results</title></head><body><h1>Here are the results of your query</h1>"
 
             result.forEach((arr, i) => {
-                console.log(arr["Ticker"])
                 html += "<div>Ticker: " + arr["Ticker"] + ", Company: " + arr["Company"] + "</div><br>"
             })
 
