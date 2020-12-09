@@ -5,9 +5,10 @@ const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 
 const app = express()
+app.use(express.static(""))
 
-app.listen(3000, function() {
-    console.log('listening on 3000')
+app.listen(process.env.PORT || 3000, function() {
+    console.log('server is running')
 })
 app.use(bodyParser.urlencoded({ extended: true }))
 
